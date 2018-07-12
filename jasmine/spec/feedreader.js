@@ -109,10 +109,12 @@ $(function() {
             });
             oldFeed = $('.feed').children();
         });
+        afterEach(function(done) {
+            loadFeed(0, function() {
+                done();
+            })
+        });
         it("ensures when a new feed is loaded, .feed content actually changes", function() {
-            // loadFeed(1, function() {
-            //     done();
-            // });
             console.log($('.feed').children()[0].outerHTML);
             console.log('oldFeed',oldFeed);
             expect($('.feed').children()[0].outerHTML).not.toEqual(oldFeed[0].outerHTML);
