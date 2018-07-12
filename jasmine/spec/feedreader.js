@@ -115,8 +115,8 @@ $(function() {
             })
         });
         it("ensures when a new feed is loaded, .feed content actually changes", function() {
-            console.log($('.feed').children()[0].outerHTML);
-            console.log('oldFeed',oldFeed);
+            console.log('newFeed', $('.feed').children()[0].outerHTML);
+            console.log('oldFeed',oldFeed.children()[0].outerHTML);
             expect($('.feed').children()[0].outerHTML).not.toEqual(oldFeed[0].outerHTML);
         });
     });
