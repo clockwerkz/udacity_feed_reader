@@ -21,7 +21,7 @@ $(function() {
          * allFeeds in app.js to be an empty array and refresh the
          * page?
          */
-        it('are defined', function() {
+        it('array allFeeds is defined', function() {
             expect(allFeeds).toBeDefined();
             expect(allFeeds.length).not.toBe(0);
         });
@@ -31,16 +31,28 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+        it('checks allFeeds to ensure they have a URL defined', function() {
+            for (feed of allFeeds) {
+                expect(feed.url).toBeDefined();
+            }
+        });
 
 
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        it('checks allFeeds to ensure they have a name defined and is not empty', function() {
+            for (feed of allFeeds) {
+                expect(feed.name).toBeDefined();
+                expect(feed.name).not.toBe('');
+            }
+        });
     });
 
 
     /* TODO: Write a new test suite named "The menu" */
+    describe("The menu", function() {
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -69,4 +81,5 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+    });
 }());
