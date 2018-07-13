@@ -86,10 +86,16 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            if (allFeeds.length >= 1) {
+                loadFeed(0, function() {
+                    done();
+                });
+            }
         });
+        it("ensures allFeeds array contains at least 1 element", function() {
+            expect(allFeeds.length).toBeGreaterThan(0);
+        });
+
         it("tests to ensure loadFeed function returns at least a single .entry element within the .feed container", function(){
             expect($('.feed').children()[0]).toBeDefined();    
         });
@@ -103,10 +109,13 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */ 
         var oldFeed;
+    
         beforeEach(function(done) {
-            loadFeed(1, function() {
-                done();
-            });
+            if (allFeeds.length >= 1) {
+                loadFeed(1, function() {
+                    done();
+                });
+            }
             oldFeed = $('.feed').children();
         });
         afterEach(function(done) {
@@ -114,6 +123,10 @@ $(function() {
                 done();
             })
         });
+        it("ensures allFeeds array contains at least 2 elements", function() {
+            expect(allFeeds.length).toBeGreaterThan(1);
+        });
+
         it("ensures when a new feed is loaded, .feed content actually changes", function() {
             console.log('newFeed', $('.feed').children()[0].outerHTML);
             console.log('oldFeed',oldFeed.children()[0].outerHTML);
